@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:secretchat/provider/themeProvider.dart';
 
-import 'mainScreen.dart';
+import 'screens/mainScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => Themeprovider(), child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -16,8 +19,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<Themeprovider>(context);
     return MaterialApp(
-      theme: ThemeData.light(useMaterial3: true),
+      theme: themeProvider.isDarkModeChecked
+          ? ThemeData.dark(useMaterial3: true)
+          : ThemeData.light(useMaterial3: true),
       home: const MainScreen(),
     );
   }

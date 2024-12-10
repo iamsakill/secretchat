@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secretchat/widgets/themeSwitcher.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -13,6 +14,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Settings"),
+      ),
+      body: const Column(
+        children: [Themeswitcher()],
       ),
     );
   }
